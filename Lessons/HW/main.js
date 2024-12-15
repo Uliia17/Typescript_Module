@@ -60,27 +60,18 @@ console.log(arr[8]);
 console.log(arr[9]);
 //---------------------------------------------
 var Book = /** @class */ (function () {
-    function Book() {
+    function Book(title, pageCount, genre) {
+        this.title = title;
+        this.pageCount = pageCount;
+        this.genre = genre;
     }
     return Book;
 }());
-var book1 = {
-    title: 'The Murders in the Rue Morgue',
-    pageCount: 288,
-    genre: 'detective'
-};
+var book1 = new Book('The Murders in the Rue Morgue', 288, 'detective');
 console.log(book1);
-var book2 = {
-    title: 'The Fall of the House of Usher',
-    pageCount: 640,
-    genre: 'horror literature'
-};
+var book2 = new Book('The Fall of the House of Usher', 640, 'horror literature');
 console.log(book2);
-var book3 = {
-    title: 'The Old Man And The Sea',
-    pageCount: 320,
-    genre: 'novel'
-};
+var book3 = new Book('The Old Man And The Sea', 320, 'novel');
 console.log(book3);
 //---------------------------------------------
 var Author = /** @class */ (function () {
@@ -115,21 +106,24 @@ var book6 = new BookNew('The Old Man And The Sea', 320, 'novel', [new Author('Er
 console.log(book6.getBookInfo());
 console.log(book6.getAuthorsInfo());
 //---------------------------------------------
-var User = /** @class */ (function () {
-    function User() {
+var User3 = /** @class */ (function () {
+    function User3(name, username, password) {
+        this.name = name;
+        this.username = username;
+        this.password = password;
     }
-    return User;
+    return User3;
 }());
-var user1 = { name: 'Ann', username: 'Ann1', password: 1234 };
-var user2 = { name: 'Olga', username: 'Olga2', password: 5678 };
-var user3 = { name: 'Elena', username: 'Elena3', password: 2345 };
-var user4 = { name: 'Julia', username: 'Julia4', password: 6789 };
-var user5 = { name: 'Lara', username: 'Lara5', password: 3456 };
-var user6 = { name: 'Lora', username: 'Lora6', password: 7890 };
-var user7 = { name: 'Jane', username: 'Jane7', password: 4567 };
-var user8 = { name: 'Nicole', username: 'Nicole8', password: 8901 };
-var user9 = { name: 'Helen', username: 'Helen9', password: 5678 };
-var user10 = { name: 'Katy', username: 'Katy10', password: 9012 };
+var user1 = new User3('Ann', 'Ann1', 1234);
+var user2 = new User3('Olga', 'Olga2', 5678);
+var user3 = new User3('Elena', 'Elena3', 2345);
+var user4 = new User3('Julia', 'Julia4', 6789);
+var user5 = new User3('Lara', 'Lara5', 3456);
+var user6 = new User3('Lora', 'Lora6', 7890);
+var user7 = new User3('Jane', 'Jane7', 4567);
+var user8 = new User3('Nicole', 'Nicole8', 8901);
+var user9 = new User3('Helen', 'Helen9', 5678);
+var user10 = new User3('Katy', 'Katy10', 9012);
 console.log(user1.password);
 console.log(user2.password);
 console.log(user3.password);
@@ -186,30 +180,15 @@ else if (r > q) {
     console.log(r);
 }
 //-------------------------------------------
-var x = 0;
-if (true) {
-    x = 'default';
-}
+var x = 'default';
 console.log(x);
-var x1 = null;
-if (true) {
-    x1 = 'default';
-}
+var x1 = 'default';
 console.log(x1);
-var x2 = undefined;
-if (true) {
-    x2 = 'default';
-}
+var x2 = 'default';
 console.log(x2);
-var x3 = NaN;
-if (true) {
-    x3 = 'default';
-}
+var x3 = 'default';
 console.log(x3);
-var x4 = 'ok';
-if (false) {
-    x4 = 'default';
-}
+var x4 = 'default';
 console.log(x4);
 //--------------------------------------------
 var CourseLast = /** @class */ (function () {
@@ -378,7 +357,7 @@ var User2 = /** @class */ (function () {
     }
     return User2;
 }());
-var users = [
+var userList = [
     new User2('vasya', 31, false),
     new User2('petya', 30, true),
     new User2('kolya', 29, true),
@@ -391,20 +370,20 @@ var users = [
     new User2('olya', 31, false),
     new User2('max', 31, true)
 ];
-for (var _b = 0, users_1 = users; _b < users_1.length; _b++) {
-    var user = users_1[_b];
+for (var _b = 0, userList_1 = userList; _b < userList_1.length; _b++) {
+    var user = userList_1[_b];
     if (user.status) {
         console.log(user);
     }
 }
-for (var _c = 0, users_2 = users; _c < users_2.length; _c++) {
-    var user = users_2[_c];
+for (var _c = 0, userList_2 = userList; _c < userList_2.length; _c++) {
+    var user = userList_2[_c];
     if (!user.status) {
         console.log(user);
     }
 }
-for (var _d = 0, users_3 = users; _d < users_3.length; _d++) {
-    var user = users_3[_d];
+for (var _d = 0, userList_3 = userList; _d < userList_3.length; _d++) {
+    var user = userList_3[_d];
     if (user.age > 30) {
         console.log(user);
     }

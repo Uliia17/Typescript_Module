@@ -71,27 +71,21 @@ class Book {
     title: string;
     pageCount: number;
     genre: string;
+
+    constructor(title: string, pageCount: number, genre: string) {
+        this.title = title;
+        this.pageCount = pageCount;
+        this.genre = genre;
+    }
 }
 
-let book1: Book = {
-    title: 'The Murders in the Rue Morgue',
-    pageCount: 288,
-    genre: 'detective'
-};
+let book1: Book = new Book('The Murders in the Rue Morgue', 288, 'detective');
 console.log(book1);
 
-let book2: Book = {
-    title: 'The Fall of the House of Usher',
-    pageCount: 640,
-    genre: 'horror literature'
-};
+let book2: Book = new Book('The Fall of the House of Usher', 640, 'horror literature');
 console.log(book2);
 
-let book3: Book = {
-    title: 'The Old Man And The Sea',
-    pageCount: 320,
-    genre: 'novel'
-};
+let book3: Book = new Book('The Old Man And The Sea', 320, 'novel');
 console.log(book3);
 //---------------------------------------------
 class Author {
@@ -145,22 +139,28 @@ let book6 = new BookNew(
 console.log(book6.getBookInfo());
 console.log(book6.getAuthorsInfo());
 //---------------------------------------------
-class User {
+class User3 {
     name: string;
     username: string;
     password: number;
+
+    constructor(name: string, username: string, password: number) {
+        this.name = name;
+        this.username = username;
+        this.password = password;
+    }
 }
 
-let user1: User = {name: 'Ann', username: 'Ann1', password: 1234};
-let user2: User = {name: 'Olga', username: 'Olga2', password: 5678};
-let user3: User = {name: 'Elena', username: 'Elena3', password: 2345};
-let user4: User = {name: 'Julia', username: 'Julia4', password: 6789};
-let user5: User = {name: 'Lara', username: 'Lara5', password: 3456};
-let user6: User = {name: 'Lora', username: 'Lora6', password: 7890};
-let user7: User = {name: 'Jane', username: 'Jane7', password: 4567};
-let user8: User = {name: 'Nicole', username: 'Nicole8', password: 8901};
-let user9: User = {name: 'Helen', username: 'Helen9', password: 5678};
-let user10: User = {name: 'Katy', username: 'Katy10', password: 9012};
+let user1: User3 = new User3('Ann', 'Ann1', 1234);
+let user2: User3 = new User3('Olga', 'Olga2', 5678);
+let user3: User3 = new User3('Elena', 'Elena3', 2345);
+let user4: User3 = new User3('Julia', 'Julia4', 6789);
+let user5: User3 = new User3('Lara', 'Lara5', 3456);
+let user6: User3 = new User3('Lora', 'Lora6', 7890);
+let user7: User3 = new User3('Jane', 'Jane7', 4567);
+let user8: User3 = new User3('Nicole', 'Nicole8', 8901);
+let user9: User3 = new User3('Helen', 'Helen9', 5678);
+let user10: User3 = new User3('Katy', 'Katy10', 9012);
 
 console.log(user1.password);
 console.log(user2.password);
@@ -216,35 +216,21 @@ if (q === r) {
     console.log(r);
 }
 //-------------------------------------------
-let x: string | number = 0;
-if (true) {
-    x = 'default';
-}
+let x: string | number = 'default';
 console.log(x);
 
-let x1: string | null = null;
-if (true) {
-    x1 = 'default';
-}
+let x1: string | null = 'default';
 console.log(x1);
 
-let x2: string | undefined = undefined;
-if (true) {
-    x2 = 'default';
-}
+let x2: string | undefined = 'default';
 console.log(x2);
 
-let x3: string | number = NaN;
-if (true) {
-    x3 = 'default';
-}
+let x3: string | number = 'default';
 console.log(x3);
 
-let x4: string = 'ok';
-if (false) {
-    x4 = 'default';
-}
+let x4: string = 'default';
 console.log(x4);
+
 //--------------------------------------------
 class CourseLast {
     constructor(
@@ -410,7 +396,7 @@ class User2 {
     ) {}
 }
 
-let users: User2[] = [
+let userList: User2[] = [
     new User2('vasya', 31, false),
     new User2('petya', 30, true),
     new User2('kolya', 29, true),
@@ -424,24 +410,20 @@ let users: User2[] = [
     new User2('max', 31, true)
 ];
 
-for (const user of users) {
+for (const user of userList) {
     if (user.status) {
         console.log(user);
     }
 }
 
-for (const user of users) {
+for (const user of userList) {
     if (!user.status) {
         console.log(user);
     }
 }
 
-for (const user of users) {
+for (const user of userList) {
     if (user.age > 30) {
         console.log(user);
     }
 }
-
-
-
-
