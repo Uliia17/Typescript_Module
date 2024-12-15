@@ -45,12 +45,42 @@ var nums = [11, 21, 3];
 console.log(sortNums(nums, 'ascending'));
 console.log(sortNums(nums, 'descending'));
 var coursesArray = [
-    { title: 'JavaScript Complex', monthDuration: 5 },
-    { title: 'Java Complex', monthDuration: 6 },
-    { title: 'Python Complex', monthDuration: 6 },
-    { title: 'QA Complex', monthDuration: 4 },
-    { title: 'FullStack', monthDuration: 7 },
-    { title: 'Frontend', monthDuration: 4 }
+    {
+        title: 'JavaScript Complex',
+        monthDuration: 5,
+        hourDuration: 909,
+        modules: ['html', 'css', 'js', 'mysql', 'mongodb', 'react', 'angular', 'aws', 'docker', 'git', 'node.js']
+    },
+    {
+        title: 'Java Complex',
+        monthDuration: 6,
+        hourDuration: 909,
+        modules: ['html', 'css', 'js', 'mysql', 'mongodb', 'angular', 'aws', 'docker', 'git', 'java core', 'java advanced']
+    },
+    {
+        title: 'Python Complex',
+        monthDuration: 6,
+        hourDuration: 909,
+        modules: ['html', 'css', 'js', 'mysql', 'mongodb', 'angular', 'aws', 'docker', 'python core', 'python advanced']
+    },
+    {
+        title: 'QA Complex',
+        monthDuration: 4,
+        hourDuration: 909,
+        modules: ['html', 'css', 'js', 'mysql', 'mongodb', 'git', 'QA/QC']
+    },
+    {
+        title: 'FullStack',
+        monthDuration: 7,
+        hourDuration: 909,
+        modules: ['html', 'css', 'js', 'mysql', 'mongodb', 'react', 'angular', 'aws', 'docker', 'git', 'node.js', 'python', 'java']
+    },
+    {
+        title: 'Frontend',
+        monthDuration: 4,
+        hourDuration: 909,
+        modules: ['html', 'css', 'js', 'mysql', 'mongodb', 'react', 'angular', 'aws', 'docker', 'git', 'sass']
+    }
 ];
 var sortedCourses = coursesArray.sort(function (a, b) { return b.monthDuration - a.monthDuration; });
 var filteredCourses = sortedCourses.filter(function (value) { return value.monthDuration > 5; });
@@ -76,8 +106,46 @@ for (var _b = 0, suits_1 = suits; _b < suits_1.length; _b++) {
     }
 }
 console.log(cards);
-console.log(cards.find(function (card) { return card.value === 'ace' && card.cardSuit === 'spade'; }));
-console.log(cards.filter(function (card) { return card.value === '6'; }));
-console.log(cards.filter(function (card) { return card.color === 'red'; }));
-console.log(cards.filter(function (card) { return card.cardSuit === 'diamond'; }));
-console.log(cards.filter(function (card) { return card.cardSuit === 'clubs' && !['6', '7', '8'].includes(card.value); }));
+// Заміна методу find
+var aceOfSpades;
+for (var _d = 0, cards_1 = cards; _d < cards_1.length; _d++) {
+    var card = cards_1[_d];
+    if (card.value === 'ace' && card.cardSuit === 'spade') {
+        aceOfSpades = card;
+        break;
+    }
+}
+console.log(aceOfSpades);
+// Заміна методу includes
+var sixes = [];
+for (var _e = 0, cards_2 = cards; _e < cards_2.length; _e++) {
+    var card = cards_2[_e];
+    if (card.value === '6') {
+        sixes.push(card);
+    }
+}
+console.log(sixes);
+var redCards = [];
+for (var _f = 0, cards_3 = cards; _f < cards_3.length; _f++) {
+    var card = cards_3[_f];
+    if (card.color === 'red') {
+        redCards.push(card);
+    }
+}
+console.log(redCards);
+var diamonds = [];
+for (var _g = 0, cards_4 = cards; _g < cards_4.length; _g++) {
+    var card = cards_4[_g];
+    if (card.cardSuit === 'diamond') {
+        diamonds.push(card);
+    }
+}
+console.log(diamonds);
+var clubsExcluding678 = [];
+for (var _h = 0, cards_5 = cards; _h < cards_5.length; _h++) {
+    var card = cards_5[_h];
+    if (card.cardSuit === 'clubs' && card.value !== '6' && card.value !== '7' && card.value !== '8') {
+        clubsExcluding678.push(card);
+    }
+}
+console.log(clubsExcluding678);

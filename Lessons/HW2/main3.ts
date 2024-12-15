@@ -34,7 +34,6 @@ function stringToArray(str: string): string[] {
 }
 console.log(stringToArray('Ревуть воли як ясла повні'));
 
-
 // ----------------------------------
 
 const numbersArray: number[] = [10, 8, -7, 55, 987, -1011, 0, 1050, 0];
@@ -60,15 +59,47 @@ console.log(sortNums(nums, 'descending'));
 interface Course {
     title: string;
     monthDuration: number;
+    hourDuration: number;
+    modules: string[];
 }
 
 let coursesArray: Course[] = [
-    { title: 'JavaScript Complex', monthDuration: 5 },
-    { title: 'Java Complex', monthDuration: 6 },
-    { title: 'Python Complex', monthDuration: 6 },
-    { title: 'QA Complex', monthDuration: 4 },
-    { title: 'FullStack', monthDuration: 7 },
-    { title: 'Frontend', monthDuration: 4 }
+    {
+        title: 'JavaScript Complex',
+        monthDuration: 5,
+        hourDuration: 909,
+        modules: ['html', 'css', 'js', 'mysql', 'mongodb', 'react', 'angular', 'aws', 'docker', 'git', 'node.js']
+    },
+    {
+        title: 'Java Complex',
+        monthDuration: 6,
+        hourDuration: 909,
+        modules: ['html', 'css', 'js', 'mysql', 'mongodb', 'angular', 'aws', 'docker', 'git', 'java core', 'java advanced']
+    },
+    {
+        title: 'Python Complex',
+        monthDuration: 6,
+        hourDuration: 909,
+        modules: ['html', 'css', 'js', 'mysql', 'mongodb', 'angular', 'aws', 'docker', 'python core', 'python advanced']
+    },
+    {
+        title: 'QA Complex',
+        monthDuration: 4,
+        hourDuration: 909,
+        modules: ['html', 'css', 'js', 'mysql', 'mongodb', 'git', 'QA/QC']
+    },
+    {
+        title: 'FullStack',
+        monthDuration: 7,
+        hourDuration: 909,
+        modules: ['html', 'css', 'js', 'mysql', 'mongodb', 'react', 'angular', 'aws', 'docker', 'git', 'node.js', 'python', 'java']
+    },
+    {
+        title: 'Frontend',
+        monthDuration: 4,
+        hourDuration: 909,
+        modules: ['html', 'css', 'js', 'mysql', 'mongodb', 'react', 'angular', 'aws', 'docker', 'git', 'sass']
+    }
 ];
 
 let sortedCourses = coursesArray.sort((a, b) => b.monthDuration - a.monthDuration);
@@ -101,8 +132,47 @@ for (const suit of suits) {
     }
 }
 console.log(cards);
-console.log(cards.find(card => card.value === 'ace' && card.cardSuit === 'spade'));
-console.log(cards.filter(card => card.value === '6'));
-console.log(cards.filter(card => card.color === 'red'));
-console.log(cards.filter(card => card.cardSuit === 'diamond'));
-console.log(cards.filter(card => card.cardSuit === 'clubs' && !['6', '7', '8'].includes(card.value)));
+
+// Заміна методу find
+let aceOfSpades: Card | undefined;
+for (const card of cards) {
+    if (card.value === 'ace' && card.cardSuit === 'spade') {
+        aceOfSpades = card;
+        break;
+    }
+}
+console.log(aceOfSpades);
+
+// Заміна методу includes
+const sixes: Card[] = [];
+for (const card of cards) {
+    if (card.value === '6') {
+        sixes.push(card);
+    }
+}
+console.log(sixes);
+
+const redCards: Card[] = [];
+for (const card of cards) {
+    if (card.color === 'red') {
+        redCards.push(card);
+    }
+}
+console.log(redCards);
+
+const diamonds: Card[] = [];
+for (const card of cards) {
+    if (card.cardSuit === 'diamond') {
+        diamonds.push(card);
+    }
+}
+console.log(diamonds);
+
+const clubsExcluding678: Card[] = [];
+for (const card of cards) {
+    if (card.cardSuit === 'clubs' && card.value !== '6' && card.value !== '7' && card.value !== '8') {
+        clubsExcluding678.push(card);
+    }
+}
+console.log(clubsExcluding678);
+
