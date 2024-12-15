@@ -1,140 +1,211 @@
-function rectangle(a: number, b: number): number {
-    const result = a * b;
-    console.log(result);
-    return result;
+class RectangleShape {
+    constructor(public a: number, public b: number) {}
+
+    area(): number {
+        const result = this.a * this.b;
+        console.log(result);
+        return result;
+    }
 }
-rectangle(2, 4);
+
+const rectangleShape = new RectangleShape(2, 4);
+rectangleShape.area();
 
 // --------------------------------------
 
-function circle(r: number): number {
-    const result = 3.14 * r * r;
-    console.log(result);
-    return result;
+class CircleShape {
+    constructor(public r: number) {}
+
+    area(): number {
+        const result = 3.14 * this.r * this.r;
+        console.log(result);
+        return result;
+    }
 }
-circle(5);
+
+const circleShape = new CircleShape(5);
+circleShape.area();
 
 // --------------------------------------
 
-function cylinder(h: number, r: number): number {
-    const result = 2 * 3.14 * r * (h + r);
-    console.log(result);
-    return result;
+class CylinderShape {
+    constructor(public h: number, public r: number) {}
+
+    area(): number {
+        const result = 2 * 3.14 * this.r * (this.h + this.r);
+        console.log(result);
+        return result;
+    }
 }
-cylinder(5, 3);
+
+const cylinderShape = new CylinderShape(5, 3);
+cylinderShape.area();
 
 // --------------------------------------
-
+// Інтерфейс без модифікаторів доступу
 interface User {
+    id: number;  // без модифікатора
     name: string;
     age: number;
     status: boolean;
 }
 
-function usersArray(array: User[]): void {
-    for (const user of array) {
-        console.log(user);
-    }
-}
-let users: User[] = [
-    { name: 'vasya', age: 31, status: false },
-    { name: 'petya', age: 30, status: true },
-    { name: 'kolya', age: 29, status: true },
-    { name: 'olya', age: 28, status: false },
-    { name: 'max', age: 30, status: true },
-    { name: 'anya', age: 31, status: false },
-    { name: 'oleg', age: 28, status: false },
-    { name: 'andrey', age: 29, status: true },
-    { name: 'masha', age: 30, status: true },
-    { name: 'olya', age: 31, status: false },
-    { name: 'max', age: 31, status: true }
-];
-usersArray(users);
+// Клас UsersList, що використовує public для властивості 'array'
+class UsersList {
+    constructor(public array: User[]) {}
 
-// --------------------------------------
-
-function writer(text: string): void {
-    console.log(`<p>${text}</p>`);
-}
-writer('lorem');
-
-// --------------------------------------
-
-function content(text: string): void {
-    console.log(`<ul> 
-<li>${text}</li> 
-<li>${text}</li> 
-<li>${text}</li> 
-</ul>`);
-}
-content('lorem');
-
-// --------------------------------------
-
-function prescription(text: string, counter: number): void {
-    console.log(`<ul>`);
-    for (let i = 0; i < counter; i++) {
-        console.log(`<li>${text}</li>`);
-    }
-    console.log(`</ul>`);
-}
-prescription('Lorem ipsum dolor.', 3);
-
-// --------------------------------------
-
-function elements(arrayOfPrimitives: (number | string | boolean)[]): void {
-    console.log(`<ul>`);
-    for (const element of arrayOfPrimitives) {
-        console.log(`<li>${element}</li>`);
-    }
-    console.log(`</ul>`);
-}
-elements([1, 'lorem', true, false]);
-// --------------------------------------
-
-interface UserWithId extends User {
-    id: number;
-}
-function documents(users: UserWithId[]): void {
-    for (const user of users) {
-        console.log(`<div>${user.id} ${user.name} ${user.age}</div>`);
-    }
-}
-documents([{ id: 1, name: 'lorem', age: 10, status: true }]);
-
-// --------------------------------------
-
-function minimal(numbers: number[]): number {
-    let min = numbers[0];
-    for (const number of numbers) {
-        if (number < min) {
-            min = number;
+    printUsers(): void {
+        for (const user of this.array) {
+            console.log(user);
         }
     }
-    return min;
 }
-console.log(minimal([3, 4, -33, 0]));
+
+const usersList = new UsersList([
+    { id: 1, name: 'vasya', age: 31, status: false },
+    { id: 2, name: 'petya', age: 30, status: true },
+    { id: 3, name: 'kolya', age: 29, status: true },
+    { id: 4, name: 'olya', age: 28, status: false },
+    { id: 5, name: 'max', age: 30, status: true },
+    { id: 6, name: 'anya', age: 31, status: false },
+    { id: 7, name: 'oleg', age: 28, status: false },
+    { id: 8, name: 'andrey', age: 29, status: true },
+    { id: 9, name: 'masha', age: 30, status: true },
+    { id: 10, name: 'olya', age: 31, status: false },
+    { id: 11, name: 'max', age: 31, status: true }
+]);
+usersList.printUsers();
 
 // --------------------------------------
 
-function sum(arr: number[]): number {
-    let total = 0;
-    for (const arrElement of arr) {
-        total = total + arrElement;
+class TextWriter {
+    constructor(public text: string) {}
+
+    write(): void {
+        console.log(`<p>${this.text}</p>`);
     }
-    return total;
 }
-console.log(sum([1, 2, 10]));
+
+const textWriter = new TextWriter('lorem');
+textWriter.write();
 
 // --------------------------------------
 
-function swap(arr: any[], index1: number, index2: number): any[] {
-    let item = arr[index1];
-    arr[index1] = arr[index2];
-    arr[index2] = item;
-    return arr;
+class ContentWriter {
+    constructor(public text: string) {}
+
+    writeContent(): void {
+        console.log(`<ul> 
+<li>${this.text}</li> 
+<li>${this.text}</li> 
+<li>${this.text}</li> 
+</ul>`);
+    }
 }
-console.log(swap([11, 22, 33, 44], 0, 1));
+
+const contentWriter = new ContentWriter('lorem');
+contentWriter.writeContent();
+
+// --------------------------------------
+
+class ListWriter {
+    constructor(public text: string, public counter: number) {}
+
+    writeList(): void {
+        console.log(`<ul>`);
+        for (let i = 0; i < this.counter; i++) {
+            console.log(`<li>${this.text}</li>`);
+        }
+        console.log(`</ul>`);
+    }
+}
+
+const listWriter = new ListWriter('Lorem ipsum dolor.', 3);
+listWriter.writeList();
+
+// --------------------------------------
+
+class ElementWriter {
+    constructor(public arrayOfPrimitives: (number | string | boolean)[]) {}
+
+    writeElements(): void {
+        console.log(`<ul>`);
+        for (const element of this.arrayOfPrimitives) {
+            console.log(`<li>${element}</li>`);
+        }
+        console.log(`</ul>`);
+    }
+}
+
+const elementWriter = new ElementWriter([1, 'lorem', true, false]);
+elementWriter.writeElements();
+
+// --------------------------------------
+
+class DocumentWriter {
+    constructor(public users: User[]) {}
+
+    writeDocuments(): void {
+        for (const user of this.users) {
+            console.log(`<div>${user.id} ${user.name} ${user.age}</div>`);
+        }
+    }
+}
+
+const documentWriter = new DocumentWriter([{ id: 1, name: 'lorem', age: 10, status: true }]);
+documentWriter.writeDocuments();
+
+// --------------------------------------
+
+class MinimalFinder {
+    constructor(public numbers: number[]) {}
+
+    findMinimal(): number {
+        let min = this.numbers[0];
+        for (const number of this.numbers) {
+            if (number < min) {
+                min = number;
+            }
+        }
+        return min;
+    }
+}
+
+const minimalFinder = new MinimalFinder([3, 4, -33, 0]);
+console.log(minimalFinder.findMinimal());
+
+// --------------------------------------
+
+class SumCalculator {
+    constructor(public arr: number[]) {}
+
+    calculateSum(): number {
+        let total = 0;
+        for (const arrElement of this.arr) {
+            total = total + arrElement;
+        }
+        return total;
+    }
+}
+
+const sumCalculator = new SumCalculator([1, 2, 10]);
+console.log(sumCalculator.calculateSum());
+
+// --------------------------------------
+
+class ArraySwapper {
+    constructor(public arr: any[], public index1: number, public index2: number) {}
+
+    swapElements(): any[] {
+        let item = this.arr[this.index1];
+        this.arr[this.index1] = this.arr[this.index2];
+        this.arr[this.index2] = item;
+        return this.arr;
+    }
+}
+
+const arraySwapper = new ArraySwapper([11, 22, 33, 44], 0, 1);
+console.log(arraySwapper.swapElements());
 
 // --------------------------------------
 
@@ -143,16 +214,22 @@ interface CurrencyValue {
     value: number;
 }
 
-function exchange(sumUAH: number, currencyValues: CurrencyValue[], exchangeCurrency: string): number {
-    let chosenCurrency: CurrencyValue | undefined;
-    for (const element of currencyValues) {
-        if (element.currency === exchangeCurrency) {
-            chosenCurrency = element;
+class CurrencyExchanger {
+    constructor(public sumUAH: number, public currencyValues: CurrencyValue[], public exchangeCurrency: string) {}
+
+    exchangeCurrencyValue(): number {
+        let chosenCurrency: CurrencyValue | undefined;
+        for (const element of this.currencyValues) {
+            if (element.currency === this.exchangeCurrency) {
+                chosenCurrency = element;
+            }
         }
+        if (chosenCurrency) {
+            return this.sumUAH / chosenCurrency.value;
+        }
+        return 0;
     }
-    if (chosenCurrency) {
-        return sumUAH / chosenCurrency.value;
-        }
-    return 0;
 }
-console.log(exchange(10000, [{ currency: 'USD', value: 40 }, { currency: 'EUR', value: 42 }], 'USD'));
+
+const currencyExchanger = new CurrencyExchanger(10000, [{ currency: 'USD', value: 40 }, { currency: 'EUR', value: 42 }], 'USD');
+console.log(currencyExchanger.exchangeCurrencyValue());
